@@ -1,0 +1,48 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+form {
+    margin-left: 20vh;
+    max-width: 300px;
+    min-width: 200px;
+    margin-right: 20vh;
+    border-radius: 15px;
+    background-color: rgb(140, 149, 180);
+    padding: 50px 50px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submitbutton {
+    background-color: #5f5f5f;
+    width: inherit;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submitbutton:hover {
+    background-color: #3e8e41;
+}
