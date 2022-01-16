@@ -1,25 +1,98 @@
-let formBody = [
-    " <h1>Form</h1>",
-    '<form name="inputForm" id="myForm">',
-    '<label for="iname">Name</label>',
-    '<input class="inputs" id="iname" name="iname" type="text " placeholder="Name" value="">',
-    '<label for="igender ">Gender</label>',
-    '<input class="inputs" id="igender" name="igender" type="text" placeholder="Gender" value="">',
-    '<label for="iage">Age</label>',
-    '<input class="inputs" id="iage" name="iage" type="number" placeholder="Age" value="">',
-    '<button class="submitbutton" id="formbutton" type="submit" value="Submit">Submit</button>',
-    "</form>"
-];
-
-$(formBody.join('')).appendTo('.container');
-
-const sbmt = document.getElementById('myForm');
-const elName = document.getElementById("iname");
-const elGender = document.getElementById("igender");
-const elAge = document.getElementById("iage");
-const elForm = document.getElementById("myForm");
+const container = document.getElementsByClassName("container")[0]
+const headerEl = document.createElement("h1");
+const formEl = document.createElement("form");
+const labelElName = document.createElement("label");
+const labelElGender = document.createElement("label");
+const labelElAge = document.createElement("label");
+const inputElName = document.createElement("input");
+const inputElGender = document.createElement("input");
+const inputElAge = document.createElement("input");
+const button = document.createElement("button");
 
 let state = [];
+
+window.onload = function createForm () {
+
+    // Form header >>>>
+    const formHeaderText = document.createTextNode("Form");
+    headerEl.appendChild(formHeaderText);
+    container.appendChild(headerEl);
+
+    // Form element >>>
+    Object.assign(formEl, {
+        name: "inputForm",
+        id: "myForm"
+    });
+   container.appendChild(formEl);
+
+    // Name Label >>>
+    const nameLabelTextName = document.createTextNode("Name");
+    labelElName.appendChild(nameLabelTextName);
+    Object.assign(labelElName, {
+        htmlFor: "iname",
+    });
+    formEl.appendChild(labelElName);
+
+    // Name Input element >>>
+    formEl.appendChild(inputElName);
+    Object.assign(inputElName, {
+        className: "inputs",
+        id: "iname",
+        name: "name",
+        type: "text",
+        placeholder: "Name",
+        defaultValue: ""
+    })
+
+    //Gender Label >>>
+    const nameLabelTextGender = document.createTextNode("Gender");
+    labelElGender.appendChild(nameLabelTextGender);
+    Object.assign(labelElGender, {
+        htmlFor: "igender",
+    });
+    formEl.appendChild(labelElGender);
+
+    //Gender Input element >>>
+    formEl.appendChild(inputElGender);
+    Object.assign(inputElGender, {
+        className: "inputs",
+        id: "igender",
+        name: "igender",
+        type: "text",
+        placeholder: "Gender",
+        defaultValue: ""
+    })
+
+    // Age Label >>>
+    const nameLabelTextAge = document.createTextNode("Age");
+    labelElAge.appendChild(nameLabelTextAge);
+    Object.assign(labelElAge, {
+        htmlFor: "iage",
+    });
+    formEl.appendChild(labelElAge);
+
+    //Age Input element >>>
+    formEl.appendChild(inputElAge);
+    Object.assign(inputElAge, {
+        className: "inputs",
+        id: "iage",
+        name: "iage",
+        type: "number",
+        placeholder: "Age",
+        defaultValue: ""
+    })
+
+    //Button >>>
+    const buttonText = document.createTextNode("Submit");
+    button.appendChild(buttonText);
+    formEl.appendChild(button);
+    Object.assign(button, {
+        className: "submitbutton",
+        id: "formbutton",
+        type: "submit",
+        defaultValue: "Submit"
+    })
+};
 
 const setData = (event) => {
     event.preventDefault();
@@ -40,9 +113,9 @@ const setData = (event) => {
 const logState = () => console.log(state);
 
 
-const resetForm = () => elForm.reset();
+const resetForm = () => formEl.reset();
 
 
-sbmt.addEventListener("submit", setData);
-sbmt.addEventListener("submit", resetForm);
-sbmt.addEventListener("submit", logState);
+formEl.addEventListener("submit", setData);
+formEl.addEventListener("submit", resetForm);
+formEl.addEventListener("submit", logState);
