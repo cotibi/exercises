@@ -53,7 +53,7 @@ function createForm() {
         placeholder: "Name",
         defaultValue: ""
     })
-//-----------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------
     //Gender <p> element >>>
     const pElGenderText = document.createTextNode("Gender");
     genderElement.appendChild(pElGenderText);
@@ -69,7 +69,7 @@ function createForm() {
         id: "radioM",
         name: "radioBttn",
         type: "radio",
-        defaultValue: "Male"
+        defaultValue: ""
     })
 
     // Label for Radio Button Male >>>
@@ -88,7 +88,7 @@ function createForm() {
         id: "radioF",
         name: "radioBttn",
         type: "radio",
-        defaultValue: "Female"
+        defaultValue: ""
     })
 
     // Label for Radio Button Female >>>
@@ -100,7 +100,7 @@ function createForm() {
     });
     formEl.appendChild(labelRadioBttnFemale);
 
-//----------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------
     // Age Label >>>
     const labelTextAge = document.createTextNode("Age");
     labelElAge.appendChild(labelTextAge);
@@ -131,6 +131,21 @@ function createForm() {
         defaultValue: "Submit"
     })
 };
+//Check wich radio button is checked and assign respective value:
+
+const checkedMale = () => {
+    if (radioBttnMale.checked) 
+    {return radioBttnMale.value = "Male"} 
+    else return radioBttnMale.value = ""
+};
+radioBttnMale.onclick = checkedMale;
+
+const checkedFemale = () => {
+    if(radioBttnFemale.checked){
+        return radioBttnFemale.value = "Female"
+    } else return radioBttnFemale = ""
+}
+radioBttnFemale.onclick = checkedFemale;
 
 const setData = (event) => {
     event.preventDefault();
@@ -147,6 +162,10 @@ const setData = (event) => {
 
     console.log(objData);
     state.push(objData);
+
+    radioBttnMale.value = "";
+    radioBttnFemale.value = "";
+    
 };
 
 const logState = () => console.log(state);
