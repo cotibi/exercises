@@ -3,15 +3,25 @@ const headerEl = document.createElement("h1");
 const formEl = document.createElement("form");
 const labelElName = document.createElement("label");
 const labelElGender = document.createElement("label");
-const labelElAge = document.createElement("label");
+
+const genderElement = document.createElement("p")
+
+const labelRadioBttnMale = document.createElement("label");
+const labelRadioBttnFemale = document.createElement("label");
+
 const inputElName = document.createElement("input");
 const inputElGender = document.createElement("input");
 const inputElAge = document.createElement("input");
+
+const radioBttnMale = document.createElement("input");
+const radioBttnFemale = document.createElement("input");
+const labelElAge = document.createElement("label");
+
 const button = document.createElement("button");
 
 let state = [];
 
-window.onload = function createForm () {
+function createForm() {
 
     // Form header >>>>
     const formHeaderText = document.createTextNode("Form");
@@ -23,11 +33,11 @@ window.onload = function createForm () {
         name: "inputForm",
         id: "myForm"
     });
-   container.appendChild(formEl);
+    container.appendChild(formEl);
 
     // Name Label >>>
-    const nameLabelTextName = document.createTextNode("Name");
-    labelElName.appendChild(nameLabelTextName);
+    const labelTextName = document.createTextNode("Name");
+    labelElName.appendChild(labelTextName);
     Object.assign(labelElName, {
         htmlFor: "iname",
     });
@@ -43,29 +53,57 @@ window.onload = function createForm () {
         placeholder: "Name",
         defaultValue: ""
     })
-
-    //Gender Label >>>
-    const nameLabelTextGender = document.createTextNode("Gender");
-    labelElGender.appendChild(nameLabelTextGender);
-    Object.assign(labelElGender, {
-        htmlFor: "igender",
+//-----------------------------------------------------------------------------------------------------------------------------
+    //Gender <p> element >>>
+    const pElGenderText = document.createTextNode("Gender");
+    genderElement.appendChild(pElGenderText);
+    Object.assign(genderElement, {
+        id: "genderElement"
     });
-    formEl.appendChild(labelElGender);
+    formEl.appendChild(genderElement);
 
-    //Gender Input element >>>
-    formEl.appendChild(inputElGender);
-    Object.assign(inputElGender, {
-        className: "inputs",
-        id: "igender",
-        name: "igender",
-        type: "text",
-        placeholder: "Gender",
-        defaultValue: ""
+    //Radio Button for Male >>>
+    formEl.appendChild(radioBttnMale);
+    Object.assign(radioBttnMale, {
+        className: "radio",
+        id: "radioM",
+        name: "radioBttn",
+        type: "radio",
+        defaultValue: "Male"
     })
 
+    // Label for Radio Button Male >>>
+    const radioBttnTextMale = document.createTextNode("Male");
+    labelRadioBttnMale.appendChild(radioBttnTextMale);
+    Object.assign(labelRadioBttnMale, {
+        className: "radioL",
+        htmlFor: "radioBttn"
+    });
+    formEl.appendChild(labelRadioBttnMale);
+
+    //Radio Button for Female >>>
+    formEl.appendChild(radioBttnFemale);
+    Object.assign(radioBttnFemale, {
+        className: "radio",
+        id: "radioF",
+        name: "radioBttn",
+        type: "radio",
+        defaultValue: "Female"
+    })
+
+    // Label for Radio Button Female >>>
+    const radioBttnTextFemale = document.createTextNode("Female");
+    labelRadioBttnFemale.appendChild(radioBttnTextFemale);
+    Object.assign(labelRadioBttnFemale, {
+        className: "radioL",
+        htmlFor: "radioBttn"
+    });
+    formEl.appendChild(labelRadioBttnFemale);
+
+//----------------------------------------------------------------------------------------------------------------
     // Age Label >>>
-    const nameLabelTextAge = document.createTextNode("Age");
-    labelElAge.appendChild(nameLabelTextAge);
+    const labelTextAge = document.createTextNode("Age");
+    labelElAge.appendChild(labelTextAge);
     Object.assign(labelElAge, {
         htmlFor: "iage",
     });
@@ -102,8 +140,9 @@ const setData = (event) => {
 
     let objData = {
         userName: flatNodeList[0],
-        userGender: flatNodeList[1],
-        userAge: flatNodeList[2]
+        userGenderMale: flatNodeList[1],
+        userGenderFemale: flatNodeList[2],
+        userAge: flatNodeList[3]
     };
 
     console.log(objData);
@@ -115,7 +154,7 @@ const logState = () => console.log(state);
 
 const resetForm = () => formEl.reset();
 
-
+window.onload = createForm;
 formEl.addEventListener("submit", setData);
 formEl.addEventListener("submit", resetForm);
 formEl.addEventListener("submit", logState);

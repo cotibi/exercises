@@ -30,6 +30,19 @@ input {
     box-sizing: border-box;
 }
 
+#genderElement {
+    text-align: center;
+}
+
+.radio {
+    width: 70%
+}
+
+.radioL {
+    float: left;
+    width: 30%
+}
+
 .submitbutton {
     background-color: #5f5f5f;
     width: inherit;
