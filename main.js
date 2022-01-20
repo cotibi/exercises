@@ -3,23 +3,18 @@ const headerEl = document.createElement("h1");
 const formEl = document.createElement("form");
 const labelElName = document.createElement("label");
 const labelElGender = document.createElement("label");
-
 const genderElement = document.createElement("p")
-
 const labelRadioBttnMale = document.createElement("label");
 const labelRadioBttnFemale = document.createElement("label");
-
 const inputElName = document.createElement("input");
 const inputElGender = document.createElement("input");
 const inputElAge = document.createElement("input");
-
 const radioBttnMale = document.createElement("input");
 const radioBttnFemale = document.createElement("input");
 const labelElAge = document.createElement("label");
-
 const button = document.createElement("button");
 
-let state = [];
+const state = [];
 
 function createForm() {
 
@@ -52,8 +47,8 @@ function createForm() {
         type: "text",
         placeholder: "Name",
         defaultValue: ""
-    })
-    //-----------------------------------------------------------------------------------------------------------------------------
+    });
+
     //Gender <p> element >>>
     const pElGenderText = document.createTextNode("Gender");
     genderElement.appendChild(pElGenderText);
@@ -70,7 +65,7 @@ function createForm() {
         name: "radioBttn",
         type: "radio",
         defaultValue: ""
-    })
+    });
 
     // Label for Radio Button Male >>>
     const radioBttnTextMale = document.createTextNode("Male");
@@ -100,7 +95,6 @@ function createForm() {
     });
     formEl.appendChild(labelRadioBttnFemale);
 
-    //----------------------------------------------------------------------------------------------------------------
     // Age Label >>>
     const labelTextAge = document.createTextNode("Age");
     labelElAge.appendChild(labelTextAge);
@@ -131,22 +125,31 @@ function createForm() {
         defaultValue: "Submit"
     })
 };
-//Check wich radio button is checked and assign respective value:
 
-const checkedMale = () => {
-    if (radioBttnMale.checked) 
-    {return radioBttnMale.value = "Male"} 
-    else return radioBttnMale.value = ""
+// Check which radio button is checked and assign respective value:
+
+const checkedM = () => {
+    if (radioBttnMale.checked) {
+        {
+            radioBttnFemale.value = "",
+            radioBttnMale.value = "Male"
+        }
+    }
 };
-radioBttnMale.onclick = checkedMale;
 
-const checkedFemale = () => {
-    if(radioBttnFemale.checked){
-        return radioBttnFemale.value = "Female"
-    } else return radioBttnFemale = ""
-}
-radioBttnFemale.onclick = checkedFemale;
+const checkedF = () => {
+    if (radioBttnFemale.checked) {
+        {
+            radioBttnMale.value = "",
+            radioBttnFemale.value = "Female"
+        }
+    }
+};
 
+radioBttnMale.onclick = checkedM;
+radioBttnFemale.onclick = checkedF;
+
+//Logic >>>
 const setData = (event) => {
     event.preventDefault();
 
@@ -160,15 +163,15 @@ const setData = (event) => {
         userAge: flatNodeList[3]
     };
 
-    console.log(objData);
+    // console.log(objData);
     state.push(objData);
 
     radioBttnMale.value = "";
     radioBttnFemale.value = "";
-    
+
 };
 
-const logState = () => console.log(state);
+// const logState = () => console.log(state);
 
 
 const resetForm = () => formEl.reset();
@@ -176,4 +179,4 @@ const resetForm = () => formEl.reset();
 window.onload = createForm;
 formEl.addEventListener("submit", setData);
 formEl.addEventListener("submit", resetForm);
-formEl.addEventListener("submit", logState);
+// formEl.addEventListener("submit", logState);

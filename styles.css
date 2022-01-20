@@ -45,7 +45,7 @@ input {
 
 .submitbutton {
     background-color: #5f5f5f;
-    width: inherit;
+    width: 100%;
     border: none;
     color: rgb(0, 0, 0);
     padding: 15px 32px;
