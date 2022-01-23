@@ -35,12 +35,12 @@ input {
 }
 
 .radio {
-    width: 70%
+    width: 70%;
 }
 
 .radioL {
     float: left;
-    width: 30%
+    width: 30%;
 }
 
 .submitbutton {

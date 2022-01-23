@@ -128,26 +128,22 @@ function createForm() {
 
 // Check which radio button is checked and assign respective value:
 
-const checkedM = () => {
+const checked = () => {
     if (radioBttnMale.checked) {
         {
             radioBttnFemale.value = "",
             radioBttnMale.value = "Male"
         }
-    }
-};
-
-const checkedF = () => {
-    if (radioBttnFemale.checked) {
+    } else if (radioBttnFemale.checked) {
         {
             radioBttnMale.value = "",
-            radioBttnFemale.value = "Female"
+            radioBttnFemale.value = "Female"  
         }
     }
 };
 
-radioBttnMale.onclick = checkedM;
-radioBttnFemale.onclick = checkedF;
+radioBttnMale.onclick = checked;
+radioBttnFemale.onclick = checked;
 
 //Logic >>>
 const setData = (event) => {
