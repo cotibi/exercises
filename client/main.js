@@ -13,8 +13,40 @@ const radioBttnMale = document.createElement("input");
 const radioBttnFemale = document.createElement("input");
 const labelElAge = document.createElement("label");
 const button = document.createElement("button");
+const url = "http://localhost:3001/check";
 
 const state = [];
+
+// const getcheck = () => {
+//     const oReq = new XMLHttpRequest();
+//     oReq.open("GET", "http://localhost:3001/check");
+
+//     oReq.send();
+//     oReq.timeout = 10000;
+//     oReq.onload = function () {
+//         if (oReq.status != 200) {
+//             console.log(oReq.statusText)
+//         }
+//         else { console.log(oReq.response.length)}
+//         let body = oReq.response;
+//         console.log(body)
+
+//     };
+
+//     oReq.onprogress = function (event) {
+//         if (event.lengthComputable) {
+//             console.log(event.loaded)
+//         }
+//         else { console.log(event.loaded) }
+//     }
+
+// };
+
+const getFetch = () => {
+    return fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data.text))
+};
 
 function createForm() {
 
@@ -132,12 +164,12 @@ const checked = () => {
     if (radioBttnMale.checked) {
         {
             radioBttnFemale.value = "",
-            radioBttnMale.value = "Male"
+                radioBttnMale.value = "Male"
         }
     } else if (radioBttnFemale.checked) {
         {
             radioBttnMale.value = "",
-            radioBttnFemale.value = "Female"  
+                radioBttnFemale.value = "Female"
         }
     }
 };
@@ -164,6 +196,8 @@ const setData = (event) => {
 
     radioBttnMale.value = "";
     radioBttnFemale.value = "";
+    // getcheck();
+    getFetch();
 
 };
 
@@ -175,4 +209,5 @@ const resetForm = () => formEl.reset();
 window.onload = createForm;
 formEl.addEventListener("submit", setData);
 formEl.addEventListener("submit", resetForm);
+
 // formEl.addEventListener("submit", logState);
